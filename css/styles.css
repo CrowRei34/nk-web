@@ -1,25 +1,42 @@
 /* --- VARIABLES GLOBALES --- */
 :root {
-    --bg-color: #1e1e2e;
-    --surface: #25263a;
-    --current-line: #313244;
-    --selection: #45475a;
-    --foreground: #cdd6f4;
-    --comment: #7f849c;
-    --cyan: #89dceb;
-    --green: #a6e3a1;
-    --orange: #fab387;
-    --pink: #f5c2e7;
-    --purple: #cba6f7;
-    --yellow: #f9e2af;
-    --red: #f38ba8;
+    --bg-color: #1e2320;
+    --surface: #272e2a;
+    --current-line: #4a534d;
+    --selection: #8da383;
+    --foreground: #d3cdc3;
+    --comment: #7f9193;
+    --cyan: #7a998d;
+    --green: #8da383;
+    --orange: #cb9b7c;
+    --pink: #a48fa1;
+    --purple: #baa9b8;
+    --yellow: #dbb095;
+    --red: #c27979;
     --sidebar-width: 280px;
     --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    --glow-primary: 0 0 30px rgba(166, 227, 161, 0.25);
-    --glow-secondary: 0 0 30px rgba(203, 166, 247, 0.25);
-    --divider: rgba(205, 214, 244, 0.08);
-    --divider-strong: rgba(205, 214, 244, 0.15);
+    --glow-primary: 0 0 30px rgba(141, 163, 131, 0.25);
+    --glow-secondary: 0 0 30px rgba(122, 153, 141, 0.25);
+    --divider: #4a534d;
+    --divider-strong: #7f9193;
+}
+
+/* --- ACCESSIBILITY --- */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--cyan);
+    color: var(--bg-color);
+    padding: 8px 16px;
+    z-index: 9999;
+    transition: top 0.2s;
+    text-decoration: none;
+    font-weight: bold;
+}
+.skip-link:focus {
+    top: 0;
 }
 
 /* --- RESET & TIPOGRAFÍA --- */
@@ -33,7 +50,7 @@
 body {
     background-color: var(--bg-color);
     color: var(--foreground);
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'IBM Plex Mono', monospace;
     line-height: 1.6;
     display: flex;
     overflow: hidden;
@@ -57,7 +74,7 @@ body::before {
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-weight: 700;
     letter-spacing: -0.03em;
 }
@@ -90,7 +107,6 @@ body.lang-ja .es { display: none !important; }
     padding: 8px 14px;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--divider-strong);
-    border-radius: 0;
     color: var(--comment);
     cursor: pointer;
     transition: all var(--transition-fast);
@@ -103,11 +119,10 @@ body.lang-ja .es { display: none !important; }
     background: rgba(255, 255, 255, 0.07);
     border-color: var(--green);
     color: var(--foreground);
-    box-shadow: 0 0 16px rgba(166, 227, 161, 0.1);
 }
 
 .lang-dropdown.open .lang-dropdown-trigger {
-    background: rgba(166, 227, 161, 0.08);
+    background: rgba(141, 163, 131, 0.08);
     border-color: var(--green);
     color: var(--green);
 }
@@ -148,17 +163,13 @@ body.lang-ja .es { display: none !important; }
     top: calc(100% + 8px);
     right: 0;
     min-width: 200px;
-    background: rgba(37, 38, 58, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(39, 46, 42, 0.95);
     border: 1px solid var(--divider-strong);
-    border-radius: 0;
     padding: 6px;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-6px) scale(0.97);
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 1px rgba(255, 255, 255, 0.1) inset;
     pointer-events: none;
 }
 
@@ -177,7 +188,6 @@ body.lang-ja .es { display: none !important; }
     padding: 10px 14px;
     background: transparent;
     border: none;
-    border-radius: 0;
     color: var(--comment);
     cursor: pointer;
     transition: all var(--transition-fast);
@@ -192,7 +202,7 @@ body.lang-ja .es { display: none !important; }
 }
 
 .lang-option.active {
-    background: rgba(166, 227, 161, 0.08);
+    background: rgba(141, 163, 131, 0.08);
     color: var(--green);
 }
 
@@ -250,7 +260,6 @@ body.lang-ja .es { display: none !important; }
     padding: 8px 14px;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--divider-strong);
-    border-radius: 0;
     color: var(--comment);
     cursor: pointer;
     font-family: 'Fira Code', monospace;
@@ -266,10 +275,9 @@ body.lang-ja .es { display: none !important; }
 }
 
 .lang-btn-pill.active {
-    background: linear-gradient(135deg, rgba(166, 227, 161, 0.15), rgba(137, 220, 235, 0.1));
+    background: linear-gradient(135deg, rgba(141, 163, 131, 0.15), rgba(122, 153, 141, 0.1));
     border-color: var(--green);
     color: var(--green);
-    box-shadow: 0 0 12px rgba(166, 227, 161, 0.15);
 }
 
 .lang-btn-pill .lang-flag {
@@ -283,9 +291,7 @@ body.lang-ja .es { display: none !important; }
 .navbar {
     width: 100%;
     height: 80px;
-    background: rgba(30, 30, 46, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: transparent;
     position: fixed;
     left: 0;
     top: 0;
@@ -313,12 +319,12 @@ body.lang-ja .es { display: none !important; }
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    width: 30px;
-    height: 24px;
+    width: 44px;
+    height: 44px;
+    padding: 10px 7px;
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0;
     z-index: 1001;
     order: 0; /* Ensure it's first on mobile */
 }
@@ -342,7 +348,7 @@ body.lang-ja .es { display: none !important; }
 .navbar-logo-img {
     width: 42px;
     height: auto;
-    filter: drop-shadow(0 0 2px rgba(166, 227, 161, 0.35));
+    filter: drop-shadow(0 0 2px rgba(141, 163, 131, 0.35));
 }
 .navbar-brand span {
     color: var(--foreground);
@@ -433,7 +439,7 @@ main { margin-left: 0; width: 100%; height: calc(100vh - 80px); margin-top: 80px
     width: 180px;
     height: auto;
     margin-bottom: 40px;
-    filter: drop-shadow(0 10px 30px rgba(166, 227, 161, 0.25));
+    filter: drop-shadow(0 10px 30px rgba(141, 163, 131, 0.25));
     animation: float 6s ease-in-out infinite;
 }
 @keyframes float {
@@ -445,12 +451,13 @@ main { margin-left: 0; width: 100%; height: calc(100vh - 80px); margin-top: 80px
     font-size: clamp(3rem, 7vw, 5.5rem);
     font-weight: 800;
     margin-bottom: 20px;
-    color: var(--foreground);
+    color: rgb(96, 128, 104);
     letter-spacing: -0.04em;
     line-height: 1;
+    text-shadow: 6px 6px 0px var(--green);
 }
 .hero h1 .accent {
-    background: linear-gradient(135deg, var(--green), var(--cyan));
+    background: linear-gradient(135deg, var(--green), var(--green));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -462,6 +469,14 @@ main { margin-left: 0; width: 100%; height: calc(100vh - 80px); margin-top: 80px
     font-size: 1rem;
     display: block;
     letter-spacing: 0.02em;
+}
+.hero .tagline {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    color: var(--green);
+    margin-top: -10px;
+    margin-bottom: 0px;
+    text-transform: uppercase;
 }
 
 .project-links {
@@ -490,7 +505,7 @@ main { margin-left: 0; width: 100%; height: calc(100vh - 80px); margin-top: 80px
 .btn-link:last-child { border-right: none; }
 .btn-link:hover {
     color: var(--green);
-    background: rgba(166, 227, 161, 0.04);
+    background: rgba(141, 163, 131, 0.04);
 }
 
 /* --- TABS --- */
@@ -551,7 +566,7 @@ details {
 }
 
 details[open] {
-    background: rgba(166, 227, 161, 0.02);
+    background: rgba(141, 163, 131, 0.02);
 }
 
 details + details {
@@ -601,7 +616,7 @@ details[open] summary::after {
 }
 
 summary:hover {
-    background: rgba(166, 227, 161, 0.04);
+    background: rgba(141, 163, 131, 0.04);
 }
 
 details[open] summary {
@@ -727,7 +742,7 @@ details[open] summary {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 60%, rgba(30, 30, 46, 0.8));
+    background: linear-gradient(180deg, transparent 60%, rgba(30, 35, 32, 0.8));
     opacity: 0;
     transition: opacity var(--transition-smooth);
     z-index: 1;
@@ -780,7 +795,7 @@ details[open] summary {
 }
 
 .edition-card:hover {
-    background: rgba(166, 227, 161, 0.03);
+    background: rgba(141, 163, 131, 0.03);
 }
 
 .edition-header {
@@ -816,7 +831,7 @@ details[open] summary {
 
 .edition-header-flavor .edition-badge.flavor {
     color: var(--pink);
-    border: 1px solid var(--pink);
+    border: 1px solid var(--green);
 }
 
 .download-col {
@@ -855,7 +870,7 @@ details[open] summary {
 }
 
 .btn-outline {
-    border: 1px solid var(--purple);
+    border: 1px solid var(--green);
     color: var(--purple);
     background: transparent;
 }
@@ -919,21 +934,20 @@ details[open] summary {
     transition: background var(--transition-fast);
 }
 .credits-grid > *:hover {
-    background: rgba(166, 227, 161, 0.03);
+    background: rgba(141, 163, 131, 0.03);
 }
 
 /* --- FEATURES GRID (Details Section) --- */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
+    gap: 32px;
     margin-bottom: 60px;
 }
 
 .feature-card {
     background: var(--surface);
     border: 1px solid var(--divider);
-    border-radius: 12px;
     padding: 32px 28px;
     transition: var(--transition-smooth);
     position: relative;
@@ -947,7 +961,7 @@ details[open] summary {
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--green), var(--cyan));
+    background: linear-gradient(90deg, var(--green), var(--green));
     transform: scaleX(0);
     transform-origin: left;
     transition: transform var(--transition-smooth);
@@ -956,7 +970,6 @@ details[open] summary {
 .feature-card:hover {
     transform: translateY(-4px);
     border-color: var(--green);
-    box-shadow: 0 8px 32px rgba(166, 227, 161, 0.15);
 }
 
 .feature-card:hover::before {
@@ -983,12 +996,12 @@ details[open] summary {
 }
 
 .feature-list li {
-    padding: 8px 0;
+    padding: 6px 0 6px 1.2rem;
     color: var(--foreground);
     font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    position: relative;
+    line-height: 1.5;
+    margin-bottom: 6px;
 }
 
 .feature-list li::before {
@@ -996,6 +1009,9 @@ details[open] summary {
     color: var(--green);
     font-family: 'Fira Code', monospace;
     font-size: 0.8rem;
+    position: absolute;
+    left: 0;
+    top: 7px;
 }
 
 /* Credits Section Styles */
@@ -1032,14 +1048,12 @@ details[open] summary {
 .about-block {
     background: var(--surface);
     border: 1px solid var(--divider);
-    border-radius: 12px;
     padding: 32px;
     transition: var(--transition-smooth);
 }
 
 .about-block:hover {
     border-color: var(--cyan);
-    box-shadow: 0 4px 20px rgba(137, 220, 235, 0.1);
 }
 
 .about-block h4 {
@@ -1078,7 +1092,6 @@ details[open] summary {
     z-index: 10005;
     padding: 6px;
     min-width: 180px;
-    backdrop-filter: blur(12px);
 }
 .context-menu-item {
     padding: 10px 14px;
@@ -1089,7 +1102,7 @@ details[open] summary {
     font-family: 'Inter', sans-serif;
 }
 .context-menu-item:hover {
-    background-color: rgba(166, 227, 161, 0.08);
+    background-color: rgba(141, 163, 131, 0.08);
     color: var(--green);
 }
 
@@ -1098,8 +1111,7 @@ details[open] summary {
     position: fixed;
     z-index: 10010;
     left: 0; top: 0; width: 100%; height: 100%;
-    background-color: rgba(17, 17, 27, 0.92);
-    backdrop-filter: blur(8px);
+    background-color: rgba(30, 35, 32, 0.92);
     align-items: center;
     justify-content: center;
 }
@@ -1196,15 +1208,14 @@ details[open] summary {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(37, 38, 58, 0.5);
+    background: rgba(39, 46, 42, 0.5);
     border: 1px solid var(--divider);
     padding: 24px 32px;
-    border-radius: 8px;
     transition: var(--transition-fast);
 }
 
 .edition-item:hover {
-    background: rgba(37, 38, 58, 0.8);
+    background: rgba(39, 46, 42, 0.8);
     border-color: var(--selection);
 }
 
@@ -1242,7 +1253,7 @@ details[open] summary {
 
 .edition-badge-flavor {
     color: var(--pink);
-    border: 1px solid var(--pink);
+    border: 1px solid var(--green);
 }
 
 .edition-actions {
@@ -1265,7 +1276,6 @@ details[open] summary {
     position: relative;
     font-family: 'Inter', sans-serif;
     letter-spacing: 0.01em;
-    border-radius: 6px;
     min-width: 160px;
     justify-content: center;
 }
@@ -1282,7 +1292,7 @@ details[open] summary {
 }
 
 .btn-edition.btn-outline {
-    border: 1px solid var(--purple);
+    border: 1px solid var(--green);
     color: var(--purple);
     background: transparent;
 }
@@ -1315,7 +1325,6 @@ details[open] summary {
     padding: 8px 12px;
     background: transparent;
     border: 1px solid var(--divider);
-    border-radius: 4px;
     max-width: 280px;
     word-break: break-all;
 }
@@ -1403,9 +1412,7 @@ details[open] summary {
         top: 70px;
         left: 0;
         right: 0;
-        background: rgba(30, 30, 46, 0.98);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        background: rgba(30, 35, 32, 0.98);
         flex-direction: column;
         height: auto;
         max-height: 0;
@@ -1735,4 +1742,485 @@ img {
     .mobile-menu-toggle.active span:nth-child(3) {
         transform: rotate(-45deg) translate(6px, -6px);
     }
+}
+
+/* ========================================
+   BRUTALIST OVERRIDES
+   ======================================== */
+
+body {
+    flex-direction: column !important;
+}
+
+/* 1. Morfología Brutalista (Cero Curvas) */
+*, *::before, *::after { 
+}
+
+/* 2. Tipografías Estrictas */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bebas Neue', sans-serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}
+body {
+    font-family: 'IBM Plex Mono', monospace !important;
+}
+.hero h1 {
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: clamp(56px, 8vw, 100px) !important;
+    line-height: 1.0 !important;
+    text-transform: uppercase;
+}
+@media (max-width: 768px) {
+    .hero h1 {
+        /* Mobile specific sizing if needed, keeping empty for now as clamp handles it */
+    }
+}
+
+/* 3. Botones y Navegación */
+.nav-link, .lang-btn-pill, .lang-dropdown-trigger, .lang-option, .btn-link, .btn-primary, .btn-secondary, .btn-main, .btn-edition, button {
+    font-family: 'IBM Plex Mono', monospace !important;
+}
+
+.btn-primary, .btn-secondary, .btn-main, .btn-edition, .btn-link {
+    font-family: 'IBM Plex Mono', monospace !important;
+    font-size: 12px !important;
+    text-transform: uppercase !important;
+    padding: 12px 28px !important;
+    letter-spacing: 0.1em !important;
+    transition: all 0.2s ease !important;
+    text-decoration: none !important;
+}
+
+.btn-primary {
+    background: var(--cyan) !important;
+    color: var(--bg-color) !important;
+    border: 1px solid var(--green) !important;
+}
+.btn-primary:hover {
+    filter: brightness(0.85) !important;
+    transform: translateY(-2px) !important;
+}
+/* Fix optical centering of navigation links */
+.nav-link {
+    padding: 12px 20px 6px 20px !important;
+    height: auto !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.nav-link span {
+    transform: translateY(1px) !important;
+    display: inline-block !important;
+    line-height: 1 !important;
+}
+
+.btn-secondary, .btn-outline, .btn-link {
+    background: transparent !important;
+    border: 1px solid var(--green) !important;
+    color: var(--cyan) !important;
+}
+.btn-secondary:hover, .btn-outline:hover, .btn-link:hover {
+    background: rgba(122, 153, 141, 0.15) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 4. Navbar Fixes */
+.navbar {
+    border-bottom: 1px solid var(--divider-strong) !important;
+}
+
+
+
+.hero {
+    position: relative;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(211, 205, 195,0.03) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(211, 205, 195,0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black, transparent);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black, transparent);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* 6. Componentes y Tarjetas (Terminal Aesthetic) */
+.feature-card, .edition-card, .about-block {
+    background: var(--bg-color) !important;
+    border: 1px solid var(--green) !important;
+    padding-top: 36px !important;
+    position: relative !important;
+    transform: none !important;
+    transition: all 0.3s ease !important;
+}
+
+@media (min-width: 768px) {
+    .feature-card, .edition-card, .about-block {
+    }
+}
+
+.feature-card::before, .edition-card::before, .about-block::before {
+    content: 'root@nekovoid:~# ./sys_info' !important;
+    position: absolute !important;
+    display: flex !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 0% !important;
+    height: 24px !important;
+    background: var(--green) !important;
+    color: var(--bg-color) !important;
+    font-family: 'IBM Plex Mono', monospace !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    align-items: center !important;
+    padding-left: 10px !important;
+    border-bottom: 1px solid var(--border) !important;
+    z-index: 2 !important;
+    box-sizing: border-box !important;
+    transition: all 0.3s ease-out !important;
+    transform: none !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+}
+
+.feature-card:hover, .edition-card:hover, .about-block:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 10px 30px -15px rgba(141, 163, 131, 0.4) !important;
+    border-color: var(--cyan) !important;
+}
+
+.feature-card:hover::before, .edition-card:hover::before, .about-block:hover::before {
+    width: 100% !important;
+    background: var(--green) !important;
+    color: var(--bg-color) !important;
+    transition: all 0.3s ease-out !important;
+}
+
+.feature-card h3, .edition-card h3, .about-block h4 {
+    margin-top: 5px !important;
+}
+
+/* 7. Ajustes adicionales para Hero order */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    width: 100%;
+    height: calc(100vh - 120px) !important;
+    position: absolute !important;
+    top: 50px !important;
+    left: 0 !important;
+    transform: none !important;
+    margin: 0 !important;
+}
+.hero-content .project-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+    border: none;
+    padding: 0;
+    max-width: 900px;
+}
+.hero-content .project-links a {
+    flex: 1;
+    min-width: 180px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero-character-img {
+    max-width: 350px;
+    object-fit: contain;
+    margin-top: 1rem;
+}
+@media (max-width: 768px) {
+    .hero-character-img {
+        max-width: 180px;
+    }
+}
+
+/* 8. Cuadrícula de Características Estricta */
+.features-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px !important;
+}
+@media (max-width: 1024px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* 9. Galería Estilo Terminal (Systemd-Free Aesthetic) */
+#galeria h2 {
+    font-size: clamp(40px, 5vw, 64px) !important;
+    color: var(--cyan) !important;
+    margin-bottom: 50px !important;
+}
+.gallery-grid {
+    gap: 30px !important;
+    background: transparent !important;
+    padding: 0 !important;
+}
+.gallery-item {
+    border: 1px solid var(--border) !important;
+    padding-top: 24px !important;
+    background: var(--bg-color) !important;
+    position: relative !important;
+    transform: none !important;
+}
+.gallery-item::before {
+    content: 'v. img_viewer_tty1' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 24px !important;
+    background: var(--border) !important;
+    color: var(--comment) !important;
+    font-family: 'IBM Plex Mono', monospace !important;
+    font-size: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    padding-left: 10px !important;
+    opacity: 1 !important;
+    z-index: 2 !important;
+    border-bottom: 1px solid var(--border) !important;
+}
+.gallery-item:hover {
+    border-color: var(--cyan) !important;
+    transform: translate(-2px, -2px) !important;
+}
+.gallery-item:hover::before {
+    background: var(--cyan) !important;
+    color: var(--bg-color) !important;
+}
+.gallery-item img {
+    border-top: none !important;
+    filter: grayscale(80%) sepia(20%) hue-rotate(180deg) contrast(120%) !important;
+    transition: all 0.3s ease !important;
+}
+.gallery-item:hover img {
+    filter: grayscale(0%) sepia(0%) hue-rotate(0deg) contrast(100%) !important;
+}
+
+/* ========================================================= */
+/* 10. BRUTALISM POLISH (Global Consistency)                   */
+/* ========================================================= */
+
+/* Enforce sharp corners everywhere, brutally destroying all glassmorphism curves */
+* {
+    border-radius: 0 !important;
+}
+
+/* Brutalist selection highlight */
+::selection {
+    background-color: var(--cyan) !important;
+    color: var(--bg-color) !important;
+}
+::-moz-selection {
+    background-color: var(--cyan) !important;
+    color: var(--bg-color) !important;
+}
+
+/* Custom sharp focus outline instead of default fuzzy browser focus rings */
+*:focus-visible {
+    outline: 2px solid var(--green) !important;
+    outline-offset: 2px !important;
+}
+
+/* Brutalist scrollbar */
+::-webkit-scrollbar {
+    width: 14px;
+    background: var(--bg-color);
+    border-left: 1px solid var(--border);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border: 2px solid var(--bg-color);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--cyan);
+}
+
+/* Language Dropdown Brutalization */
+.lang-dropdown-menu {
+    background: var(--bg-color) !important;
+    border: 1px solid var(--green) !important;
+    box-shadow: 4px 4px 0px rgba(122, 153, 141, 0.2) !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+}
+.lang-option {
+    border-bottom: 1px solid var(--border) !important;
+    padding: 12px 16px !important;
+    transition: none !important;
+}
+.lang-option:last-child {
+    border-bottom: none !important;
+}
+.lang-option:hover {
+    background: var(--cyan) !important;
+    color: var(--bg-color) !important;
+}
+.lang-option:hover .lang-name,
+.lang-option:hover .lang-code {
+    color: var(--bg-color) !important;
+}
+.lang-option.active .lang-check svg {
+    stroke: var(--green) !important;
+}
+.lang-option:hover.active .lang-check svg {
+    stroke: var(--bg-color) !important;
+}
+
+/* Navbar Logo Brutalization */
+.navbar-brand span {
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 1.8rem !important;
+    letter-spacing: 0.1em !important;
+    color: var(--foreground) !important;
+    transform: translateY(2px) !important; /* Visual alignment for Bebas Neue */
+    display: inline-block !important;
+    text-shadow: 2px 2px 0px var(--bg-color), 3px 3px 0px rgba(141, 163, 131, 0.2) !important;
+}
+.navbar-brand:hover span {
+    color: var(--cyan) !important;
+}
+
+/* Headings universal retro shadow */
+h2, h3, h4, h5, h6 {
+    text-shadow: 2px 2px 0px var(--bg-color), 3px 3px 0px rgba(122, 153, 141, 0.1) !important;
+}
+
+/* ========================================================= */
+/* 11. ULTIMATE FRONTEND POLISH (Terminal Patterns)          */
+/* ========================================================= */
+
+/* Dot Matrix Grid Background */
+body {
+    background-image: radial-gradient(rgba(122, 153, 141, 0.15) 1px, transparent 1px) !important;
+    background-size: 24px 24px !important;
+    background-position: 0 0 !important;
+}
+
+/* Blinking Terminal Cursor */
+.cursor {
+    display: inline-block !important;
+    color: var(--green) !important;
+    font-weight: 700;
+    font-size: inherit !important;
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Enhanced Focus/Hover States for Buttons */
+.btn-primary, .btn-secondary, .btn-main, .btn-edition {
+    position: relative;
+    overflow: hidden;
+}
+.btn-primary::before, .btn-secondary::before, .btn-main::before, .btn-edition::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+.btn-primary:hover::before, .btn-secondary:hover::before, .btn-main:hover::before, .btn-edition:hover::before {
+    left: 100%;
+}
+
+/* --- TEAM GRID --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.team-card {
+    background: var(--surface);
+    border: 1px solid var(--divider);
+    padding: 32px 28px;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.team-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green), var(--cyan));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-smooth);
+}
+
+.team-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--green);
+}
+
+.team-card:hover::before {
+    transform: scaleX(1);
+}
+
+.team-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 16px;
+    border: 2px solid var(--divider);
+    transition: border-color var(--transition-smooth);
+}
+
+.team-card:hover .team-avatar {
+    border-color: var(--green);
+}
+
+.team-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: var(--green);
+}
+
+.team-title {
+    color: var(--orange);
+    font-size: 0.9rem;
+    font-family: 'IBM Plex Mono', monospace;
+    margin-bottom: 16px;
+}
+
+.team-desc {
+    color: var(--comment);
+    line-height: 1.6;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
 }
