@@ -163,7 +163,7 @@ img {
     }
 
     /* ----- HERO ----- */
-    .hero {
+    .hero.active {
         padding: 0 !important;
         min-height: 100% !important;
         display: flex !important;
