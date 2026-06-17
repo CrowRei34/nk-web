@@ -6,6 +6,6 @@
     <flavor id="hyprland" sha256=".."></flavor>
     <flavor id="lxqt" sha256="30f4ac1733bec0126efb9af1da18475b5b3305a5b698344fc4a3a803db37022f">https://javiercplus.github.io/neko-download/lxqt/</flavor>
     <flavor id="labwc-openbox" sha256=".."></flavor>
-    <flavor id="niri" sha256=".."></flavor>
+    <flavor id="niri" sha256="9e0c493891a810b0e0378d982981b2360e61d073eb03e04ba1ff0c98d0965405">https://javiercplus.github.io/neko-download/niri/</flavor>
     <flavor id="icewm-jwm" sha256="1675051c118f2647f6a6c82f925a4942df0d120c4c1ae08d707ce7c2a8c7615d">https://javiercplus.github.io/neko-download/jwm/</flavor>
 </flavors>
