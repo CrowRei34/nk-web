@@ -75,7 +75,7 @@ For more details, check out the specialized guides:
 ---
 
 
-## 🤝 Contributing
+##  Contributing
 
 We welcome all contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) to understand:
 - Commit message rules (Conventional Commits).
@@ -84,6 +84,6 @@ We welcome all contributions! Please read our [Contributing Guidelines](CONTRIBU
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the terms of the license details found in this repository.
