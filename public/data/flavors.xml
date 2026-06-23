@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flavors>
     <flavor id="xfce" sha256="c5ba8ccaa7b5ed6aa334f783fe3d297bcb050f224c315c6e0b3f11ac5dc5307c">https://javiercplus.github.io/neko-download/xfce/</flavor>
-    <flavor id="kde" sha256="d92e0823e895bb88615df8e17b5361f4bc3d6b1e0a3f9ff64c2f22c484e70455">https://javiercplus.github.io/neko-download/kde/</flavor>
+    <flavor id="kde" sha256="207e0673d51166afdfb5349526206a80712273713390e8005d928c57b802174b">https://nekovoid.vercel.app/dd/kde</flavor>
     <flavor id="sway-i3" sha256=".."></flavor>
     <flavor id="openbox" sha256=".."></flavor>
     <flavor id="lxqt" sha256="6ab7a2beb1e74d67ff862a556d92bdd409c815e566eeee48476d66dd1203dd9a">https://javiercplus.github.io/neko-download/lxqt/</flavor>
